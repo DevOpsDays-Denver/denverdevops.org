@@ -226,6 +226,42 @@ main {
     margin: 0;
 }
 
+/* Social Card Specific Styles */
+.social-card {
+    cursor: default;
+}
+
+.social-card:hover {
+    transform: none;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    border-left-color: #1976d2;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    justify-content: center;
+}
+
+.social-link {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: #1976d2;
+    color: white;
+    border-radius: 6px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    background: #0d47a1;
+    color: white;
+    transform: translateY(-2px);
+}
+
 /* About Section */
 .about {
     background: white;
@@ -449,5 +485,15 @@ footer {
     
     .action-button {
         width: 100%;
+    }
+    
+    .social-links {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .social-link {
+        width: 100%;
+        text-align: center;
     }
 }
