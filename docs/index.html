@@ -22,6 +22,7 @@
                     <li><a href="/">Home</a></li>
                     <li><a href="/values.html">Our Values</a></li>
                     <li><a href="/get-involved">Get Involved</a></li>
+                    <li><a href="/sponsor">Sponsor</a></li>
                 </ul>
             </div>
         </nav>
@@ -47,6 +48,74 @@
                 </div>
             </div>
             <div class="mountain-divider"></div>
+        </section>
+
+        <section class="about">
+            <div style="text-align: center;"><span class="eyebrow">New Here?</span></div>
+            <h2><span class="accent-word">What</span> is DevOpsDays?</h2>
+            <p style="text-align: center;">DevOpsDays Rockies in Denver is back for its 10th year!</p>
+            <p style="text-align: center;">
+                DevOpsDays is a worldwide series of community-focused technical conferences covering topics of
+                software development, IT infrastructure operations, and the intersection between them. Each event
+                is run by volunteers from the local community.
+            </p>
+        </section>
+
+        <section class="countdown-section">
+            <div style="text-align: center;"><span class="eyebrow">Mark Your Calendar</span></div>
+            <h2><span class="accent-word-alt">Countdown</span> to DevOpsDays Rockies</h2>
+            <div class="countdown" id="countdown" data-target="2026-09-22T00:00:00-06:00">
+                <div class="countdown-unit">
+                    <span class="countdown-value" data-unit="days">00</span>
+                    <span class="countdown-label">Days</span>
+                </div>
+                <div class="countdown-unit">
+                    <span class="countdown-value" data-unit="hours">00</span>
+                    <span class="countdown-label">Hours</span>
+                </div>
+                <div class="countdown-unit">
+                    <span class="countdown-value" data-unit="minutes">00</span>
+                    <span class="countdown-label">Minutes</span>
+                </div>
+                <div class="countdown-unit">
+                    <span class="countdown-value" data-unit="seconds">00</span>
+                    <span class="countdown-label">Seconds</span>
+                </div>
+            </div>
+            <p class="venue-address">
+                <a href="https://www.google.com/maps/search/?api=1&query=Bierstadt+Lagerhaus+2875+Blake+St+Denver+CO+80205">Bierstadt Lagerhaus, 2875 Blake St, Denver, CO 80205</a>
+            </p>
+            <div class="map-embed">
+                <iframe src="https://www.google.com/maps?q=Bierstadt+Lagerhaus+2875+Blake+St+Denver+CO+80205&output=embed" title="Map to Bierstadt Lagerhaus" loading="lazy" allowfullscreen></iframe>
+            </div>
+        </section>
+
+        <section class="connect">
+            <div style="text-align: center;"><span class="eyebrow">Meet The Lineup</span></div>
+            <h2><span class="accent-word-alt">Speakers</span></h2>
+            <div class="embed-container">
+                <iframe src="https://devopsdays.org/events/2026-denver/speakers" title="DevOpsDays Rockies 2026 Speakers" loading="lazy"></iframe>
+            </div>
+        </section>
+
+        <section class="connect">
+            <div style="text-align: center;"><span class="eyebrow">Session Lineup</span></div>
+            <h2><span class="accent-word">Talks</span></h2>
+            <div class="embed-container">
+                <iframe src="https://devopsdays.org/events/2026-denver/talks" title="DevOpsDays Rockies 2026 Talks" loading="lazy"></iframe>
+            </div>
+        </section>
+
+        <section class="connect">
+            <div style="text-align: center;"><span class="eyebrow">Support The Community</span></div>
+            <h2><span class="accent-word">Sponsor</span> DevOpsDays Rockies</h2>
+            <p style="text-align: center;">
+                Help bring the regional DevOps community together — check out our
+                sponsorship opportunities.
+            </p>
+            <p style="text-align: center; margin-top: 1.5rem;">
+                <a href="/sponsor" class="action-button primary">View Sponsorship Info →</a>
+            </p>
         </section>
 
         <section class="carousel-section">
@@ -84,24 +153,11 @@
         <section class="connect">
             <div style="text-align: center;"><span class="eyebrow">Community</span></div>
             <h2><span class="accent-word">Come</span> Meet Us</h2>
-            <div class="links-grid">
-                <a href="https://www.meetup.com/denverdevops" class="link-card">
-                    <h3>Meetup Events</h3>
-                    <p>Monthly talks, workshops, and networking opportunities</p>
-                </a>
-
-                <a href="https://wildspaces.work" class="link-card">
-                    <h3>Wild Spaces</h3>
-                    <p>Work from the woods - combining remote work with nature</p>
-                </a>
-
-                <a href="https://devopsdays.org/events/2026-denver" class="link-card">
-                    <h3>DevOpsDays Rockies</h3>
-                    <p>Annual conference bringing together the regional DevOps community</p>
-                </a>
-            </div>
+            <p style="text-align: center;">
+                Slack, Meetup, socials, and more — all the ways to connect with the Denver DevOps community.
+            </p>
             <p style="text-align: center; margin-top: 1.5rem;">
-                <a href="/get-involved">See all ways to get involved →</a>
+                <a href="/get-involved" class="action-button primary">See All Ways to Get Involved →</a>
             </p>
         </section>
 
@@ -180,6 +236,50 @@
             carousel.addEventListener('mouseleave', resetTimer);
 
             resetTimer();
+        })();
+
+        (function () {
+            var el = document.getElementById('countdown');
+            if (!el) return;
+
+            var target = new Date(el.getAttribute('data-target')).getTime();
+            var values = {
+                days: el.querySelector('[data-unit="days"]'),
+                hours: el.querySelector('[data-unit="hours"]'),
+                minutes: el.querySelector('[data-unit="minutes"]'),
+                seconds: el.querySelector('[data-unit="seconds"]')
+            };
+            var timer;
+
+            function pad(n) {
+                return n < 10 ? '0' + n : '' + n;
+            }
+
+            function tick() {
+                var diff = target - Date.now();
+
+                if (diff <= 0) {
+                    clearInterval(timer);
+                    el.innerHTML = '<p style="font-family: var(--font-heading); font-weight: 700; font-size: 1.5rem; color: var(--color-accent-2);">We\'re live! See you at Bierstadt Lagerhaus.</p>';
+                    return;
+                }
+
+                var seconds = Math.floor(diff / 1000);
+                var days = Math.floor(seconds / 86400);
+                seconds -= days * 86400;
+                var hours = Math.floor(seconds / 3600);
+                seconds -= hours * 3600;
+                var minutes = Math.floor(seconds / 60);
+                seconds -= minutes * 60;
+
+                values.days.textContent = pad(days);
+                values.hours.textContent = pad(hours);
+                values.minutes.textContent = pad(minutes);
+                values.seconds.textContent = pad(seconds);
+            }
+
+            tick();
+            timer = setInterval(tick, 1000);
         })();
     </script>
 </body>

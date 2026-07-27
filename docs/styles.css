@@ -360,6 +360,68 @@ main {
     height: 32px;
 }
 
+/* Countdown Section */
+.countdown-section {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.countdown {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    margin-top: 2rem;
+}
+
+.countdown-unit {
+    min-width: 100px;
+    padding: 1.25rem 1rem;
+    background: white;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--color-border);
+}
+
+.countdown-value {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    line-height: 1.1;
+}
+
+.countdown-label {
+    display: block;
+    margin-top: 0.35rem;
+    font-size: 0.82rem;
+    color: var(--color-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.venue-address {
+    text-align: center;
+    margin-top: 1.75rem;
+}
+
+.map-embed {
+    margin-top: 1rem;
+    height: 380px;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--color-border);
+}
+
+.map-embed iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+}
+
 /* About Section */
 .about {
     background: white;
@@ -746,6 +808,15 @@ footer {
 
     .links-grid, .values-grid {
         grid-template-columns: 1fr;
+    }
+
+    .countdown-unit {
+        min-width: 72px;
+        padding: 1rem 0.6rem;
+    }
+
+    .countdown-value {
+        font-size: 1.75rem;
     }
 
     .action-links {

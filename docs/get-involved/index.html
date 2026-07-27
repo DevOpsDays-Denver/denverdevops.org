@@ -22,6 +22,7 @@
                     <li><a href="/">Home</a></li>
                     <li><a href="/values.html">Our Values</a></li>
                     <li><a href="/get-involved">Get Involved</a></li>
+                    <li><a href="/sponsor">Sponsor</a></li>
                 </ul>
             </div>
         </nav>
@@ -29,13 +30,37 @@
 
     <main>
         <section class="values-hero">
-            <span class="eyebrow">Join Us</span>
             <h1><span class="glow-word">Get</span> <span class="glow-word-alt">Involved</span></h1>
             <div class="mountain-divider"></div>
         </section>
 
+        <section class="carousel-section">
+            <div style="text-align: center;"><span class="eyebrow">Community</span></div>
+            <h2><span class="accent-word">Out</span> in the Wild</h2>
+            <div class="carousel">
+                <div class="carousel-track-container">
+                    <div class="carousel-track">
+                        <div class="carousel-slide">
+                            <img src="/images/get-involved-gallery/img_0193.jpg" alt="Tents and trucks spread across a sunny mountain meadow campsite" loading="lazy">
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="/images/get-involved-gallery/wildspaces-1.jpg" alt="A group gathered around a campfire at night, sharing drinks and conversation" loading="lazy">
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="/images/get-involved-gallery/wildspaces-2.jpg" alt="Aerial view of a Wild Spaces campsite in a forest clearing with mountains in the distance" loading="lazy">
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="/images/get-involved-gallery/wildspaces-3.jpg" alt="Drone view straight down on a small group camped in a forest clearing" loading="lazy">
+                        </div>
+                    </div>
+                    <button class="carousel-arrow prev" aria-label="Previous photo" type="button">&lsaquo;</button>
+                    <button class="carousel-arrow next" aria-label="Next photo" type="button">&rsaquo;</button>
+                </div>
+                <div class="carousel-dots"></div>
+            </div>
+        </section>
+
         <section class="connect">
-            <div style="text-align: center;"><span class="eyebrow">Get Involved</span></div>
             <h2><span class="accent-word">Join</span> Us</h2>
             <div class="links-grid">
                 <a href="https://www.meetup.com/denverdevops" class="link-card">
@@ -109,5 +134,56 @@
             <p>Built with care at 5,280 feet</p>
         </div>
     </footer>
+
+    <script>
+        (function () {
+            var carousel = document.querySelector('.carousel');
+            if (!carousel) return;
+
+            var track = carousel.querySelector('.carousel-track');
+            var slides = carousel.querySelectorAll('.carousel-slide');
+            var dotsContainer = carousel.querySelector('.carousel-dots');
+            var prevBtn = carousel.querySelector('.carousel-arrow.prev');
+            var nextBtn = carousel.querySelector('.carousel-arrow.next');
+            var index = 0;
+            var timer;
+
+            slides.forEach(function (_, i) {
+                var dot = document.createElement('button');
+                dot.type = 'button';
+                dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+                dot.setAttribute('aria-label', 'Go to photo ' + (i + 1));
+                dot.addEventListener('click', function () { goTo(i); });
+                dotsContainer.appendChild(dot);
+            });
+            var dots = carousel.querySelectorAll('.carousel-dot');
+
+            function update() {
+                track.style.transform = 'translateX(-' + (index * 100) + '%)';
+                dots.forEach(function (d, i) { d.classList.toggle('active', i === index); });
+            }
+
+            function goTo(i) {
+                index = (i + slides.length) % slides.length;
+                update();
+                resetTimer();
+            }
+
+            function next() { goTo(index + 1); }
+            function prev() { goTo(index - 1); }
+
+            function resetTimer() {
+                clearInterval(timer);
+                timer = setInterval(next, 5000);
+            }
+
+            prevBtn.addEventListener('click', prev);
+            nextBtn.addEventListener('click', next);
+            carousel.addEventListener('mouseenter', function () { clearInterval(timer); });
+            carousel.addEventListener('mouseleave', resetTimer);
+
+            resetTimer();
+        })();
+    </script>
 </body>
 </html>
