@@ -4,20 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Denver DevOps - Where Tech Meets Mountains</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" type="image/x-icon" href="favicon.png">
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.png">
 </head>
 <body>
     <header>
         <nav>
             <div class="nav-container">
-                <div class="logo-section">
-                    <img src="imgaes/denverdevops-logo.png" alt="Denver DevOps Logo" class="header-logo">
+                <a href="/" class="logo-section">
+                    <img src="/images/denverdevops-logo.png" alt="Denver DevOps Logo" class="header-logo">
                     <span class="logo-text">Denver DevOps</span>
-                </div>
+                </a>
                 <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="pages/values.html">Our Values</a></li>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/values.html">Our Values</a></li>
+                    <li><a href="/get-involved">Get Involved</a></li>
                 </ul>
             </div>
         </nav>
@@ -25,17 +26,21 @@
 
     <main>
         <section class="hero">
+            <!-- TODO: replace with an official conference/event photo once organizers provide one (see specs/denverdevops.org-2026-content-implementation.md open items) -->
             <div class="hero-image-container">
-                <img src="img/denverdevops-logo.png" alt="Denver DevOps" class="hero-logo">
+                <img src="/images/denverdevops-logo.png" alt="Denver DevOps" class="hero-logo">
             </div>
             <div class="hero-content">
-                <h1>Denver DevOps</h1>
-                <p class="tagline">Building resilient systems at altitude</p>
+                <h1>DevOpsDays Rockies is Back!</h1>
+                <p class="tagline">September 22&ndash;23, 2026 &middot; Bierstadt Lagerhaus, Denver</p>
                 <p class="description">
-                    We're a community of DevOps practitioners, engineers, and enthusiasts 
-                    in the Mile High City. From continuous integration to mountain trails, 
-                    we believe in automation, collaboration, and getting outside.
+                    Join us for the 10th annual DevOpsDays Rockies — two days of talks,
+                    open spaces, and community for DevOps practitioners across the region.
                 </p>
+                <div class="action-links">
+                    <a href="/2026/register" class="action-button primary">Register →</a>
+                    <a href="/2026/schedule" class="action-button secondary">View Schedule →</a>
+                </div>
             </div>
             <div class="mountain-divider"></div>
         </section>
@@ -44,66 +49,43 @@
             <h2>Connect With Us</h2>
             <div class="links-grid">
                 <a href="https://rb.gy/b8zfq" class="link-card">
-                    <div class="link-icon">💬</div>
                     <h3>Join Our Slack</h3>
                     <p>Real-time discussions, job postings, and community support</p>
                 </a>
 
                 <a href="https://www.meetup.com/denverdevops" class="link-card">
-                    <div class="link-icon">🤝</div>
                     <h3>Meetup Events</h3>
                     <p>Monthly talks, workshops, and networking opportunities</p>
                 </a>
-                
-                <a href="https://youtube.com/@devopsdaysrockies" class="link-card">
-                    <div class="link-icon">🎥</div>
-                    <h3>Youtube</h3>
-                    <p>Archive of past DevOps Days Rockies events</p>
-                </a>
-
-                <a href="https://lu.ma/denverdevops" class="link-card">
-                    <div class="link-icon">📅</div>
-                    <h3>Luma Calendar</h3>
-                    <p>Stay updated with our latest events and gatherings</p>
-                </a>
 
                 <a href="https://wildspaces.work" class="link-card">
-                    <div class="link-icon">🏔️</div>
                     <h3>Wild Spaces</h3>
                     <p>Work from the woods - combining remote work with nature</p>
                 </a>
 
                 <a href="https://devopsdays.org/events/2026-denver" class="link-card">
-                    <div class="link-icon">🎯</div>
                     <h3>DevOpsDays Rockies</h3>
                     <p>Annual conference bringing together the regional DevOps community</p>
                 </a>
-
-                <div class="link-card social-card">
-                    <div class="link-icon">📢</div>
-                    <h3>Follow Us</h3>
-                    <p>Stay connected on social media</p>
-                    <div class="social-links">
-                        <a href="https://x.com/devopsdaysrox" class="social-link">Twitter</a>
-                        <a href="https://www.linkedin.com/company/devopsdaysrox" class="social-link">LinkedIn</a>
-                    </div>
-                </div>
             </div>
+            <p style="text-align: center; margin-top: 1.5rem;">
+                <a href="/get-involved">See all ways to get involved →</a>
+            </p>
         </section>
 
         <section class="about">
             <h2>What We're About</h2>
             <div class="values-preview">
                 <div class="value-item">
-                    <h3>🚀 Continuous Learning</h3>
+                    <h3>Continuous Learning</h3>
                     <p>Share knowledge, fail fast, iterate always</p>
                 </div>
                 <div class="value-item">
-                    <h3>🤲 Open Source First</h3>
+                    <h3>Open Source First</h3>
                     <p>Building on and contributing to the commons</p>
                 </div>
                 <div class="value-item">
-                    <h3>⚖️ Work-Life Balance</h3>
+                    <h3>Work-Life Balance</h3>
                     <p>Great code happens when we take time to recharge outdoors</p>
                 </div>
             </div>
@@ -113,7 +95,7 @@
     <footer>
         <div class="footer-content">
             <p>&copy; 2024 Denver DevOps Community</p>
-            <p>Built with ❤️ at 5,280 feet</p>
+            <p>Built with care at 5,280 feet</p>
         </div>
     </footer>
 </body>
