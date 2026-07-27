@@ -9,10 +9,13 @@
 
 :root {
     --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", "Helvetica Neue", Arial, sans-serif;
+    --font-heading: "Space Grotesk", var(--font-sans);
     --color-ink: #1e2430;
     --color-navy: #16213e;
     --color-accent: #2563eb;
     --color-accent-dark: #1d4ed8;
+    --color-accent-2: #10b981;
+    --color-accent-2-dark: #059669;
     --color-amber: #d97706;
     --color-amber-dark: #b45309;
     --color-muted: #5b6472;
@@ -36,7 +39,7 @@ body {
 
 /* Typography */
 h1, h2, h3 {
-    font-family: var(--font-sans);
+    font-family: var(--font-heading);
     color: var(--color-navy);
     font-weight: 700;
     letter-spacing: -0.01em;
@@ -58,6 +61,41 @@ h3 {
     font-size: 1.15rem;
     margin-bottom: 0.5rem;
     font-weight: 600;
+    font-family: var(--font-sans);
+}
+
+/* Eyebrow label — small pill above a heading */
+.eyebrow {
+    display: inline-block;
+    background: #eef2ff;
+    color: var(--color-accent-dark);
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.9rem;
+    border-radius: 999px;
+    margin-bottom: 0.9rem;
+}
+
+/* Two-tone heading accents — flat color for section headings, glow for hero titles */
+.accent-word {
+    color: var(--color-accent);
+}
+
+.accent-word-alt {
+    color: var(--color-accent-2);
+}
+
+.glow-word {
+    color: var(--color-accent);
+    text-shadow: 0 0 24px rgba(37, 99, 235, 0.35);
+}
+
+.glow-word-alt {
+    color: var(--color-accent-2);
+    text-shadow: 0 0 24px rgba(16, 185, 129, 0.35);
 }
 
 p {
@@ -78,10 +116,16 @@ a:hover {
 header {
     background: rgba(255, 255, 255, 0.92);
     backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--color-border);
     position: sticky;
     top: 0;
     z-index: 100;
+}
+
+header::after {
+    content: "";
+    display: block;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-accent) 0%, var(--color-accent-2) 100%);
 }
 
 .nav-container {
@@ -281,7 +325,9 @@ main {
 }
 
 .social-link {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
     padding: 0.6rem 1.25rem;
     background: #f1f4f9;
     color: var(--color-navy);
@@ -292,9 +338,26 @@ main {
     transition: all 0.2s ease;
 }
 
+.social-link svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    fill: currentColor;
+}
+
 .social-link:hover {
     background: var(--color-accent);
     color: white;
+}
+
+/* Brand logo shown above a link-card's title */
+.card-icon {
+    margin-bottom: 0.75rem;
+}
+
+.card-icon svg {
+    width: 32px;
+    height: 32px;
 }
 
 /* About Section */
@@ -400,8 +463,8 @@ main {
 
 .action-button {
     display: inline-block;
-    padding: 0.85rem 1.75rem;
-    border-radius: var(--radius-sm);
+    padding: 0.85rem 1.85rem;
+    border-radius: 999px;
     font-family: var(--font-sans);
     font-weight: 600;
     font-size: 0.95rem;
@@ -501,6 +564,106 @@ main {
     color: var(--color-muted);
     font-size: 0.92rem;
     margin-bottom: 3rem;
+}
+
+/* Photo Carousel */
+.carousel-section {
+    margin-bottom: 3rem;
+}
+
+.carousel {
+    position: relative;
+    max-width: 900px;
+    margin: 2rem auto 0;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--color-border);
+    background: white;
+}
+
+.carousel-track-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+}
+
+.carousel-track {
+    display: flex;
+    height: 100%;
+    transition: transform 0.5s ease;
+}
+
+.carousel-slide {
+    flex: 0 0 100%;
+    height: 100%;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+    color: var(--color-navy);
+    font-size: 1.3rem;
+    line-height: 1;
+    transition: all 0.2s ease;
+    z-index: 2;
+}
+
+.carousel-arrow:hover {
+    background: white;
+    transform: translateY(-50%) scale(1.08);
+}
+
+.carousel-arrow.prev {
+    left: 1rem;
+}
+
+.carousel-arrow.next {
+    right: 1rem;
+}
+
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem;
+}
+
+.carousel-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-border);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.carousel-dot.active {
+    background: var(--color-accent);
+    width: 22px;
+    border-radius: 4px;
 }
 
 /* Widget embeds (e.g. Pretalx schedule widget) — height is content-driven, not fixed */
@@ -607,5 +770,15 @@ footer {
     .embed-container iframe {
         min-height: 900px;
         height: 900px;
+    }
+
+    .carousel-arrow {
+        width: 32px;
+        height: 32px;
+        font-size: 1.1rem;
+    }
+
+    .carousel-track-container {
+        aspect-ratio: 4 / 3;
     }
 }

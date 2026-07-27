@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Denver DevOps - Where Tech Meets Mountains</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles.css">
     <link rel="icon" type="image/x-icon" href="/favicon.png">
 </head>
@@ -31,7 +34,8 @@
                 <img src="/images/denverdevops-logo.png" alt="Denver DevOps" class="hero-logo">
             </div>
             <div class="hero-content">
-                <h1>DevOpsDays Rockies is Back!</h1>
+                <span class="eyebrow">2026 Conference</span>
+                <h1><span class="glow-word">DevOpsDays</span> <span class="glow-word-alt">Rockies</span> is Back!</h1>
                 <p class="tagline">September 22&ndash;23, 2026 &middot; Bierstadt Lagerhaus, Denver</p>
                 <p class="description">
                     Join us for the 10th annual DevOpsDays Rockies — two days of talks,
@@ -45,14 +49,42 @@
             <div class="mountain-divider"></div>
         </section>
 
-        <section class="connect">
-            <h2>Connect With Us</h2>
-            <div class="links-grid">
-                <a href="https://rb.gy/b8zfq" class="link-card">
-                    <h3>Join Our Slack</h3>
-                    <p>Real-time discussions, job postings, and community support</p>
-                </a>
+        <section class="carousel-section">
+            <div style="text-align: center;"><span class="eyebrow">2025 Recap</span></div>
+            <h2><span class="accent-word">Moments</span> from Last Year</h2>
+            <div class="carousel">
+                <div class="carousel-track-container">
+                    <div class="carousel-track">
+                        <div class="carousel-slide">
+                            <img src="/images/gallery/dsc03647.jpg" alt="Bierstadt Lagerhaus exterior on a sunny day, with attendees seated on the covered patio" loading="lazy">
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="/images/gallery/dsc03279.jpg" alt="A speaker presenting to a full room at DevOpsDays Rockies, with Colorado-themed banners hanging overhead" loading="lazy">
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="/images/gallery/img_7783.jpg" alt="String-lit rooftop lounge area at the Bierstadt Lagerhaus venue in the evening" loading="lazy">
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="/images/gallery/dsc03454.jpg" alt="Two organizers laughing together on stage in front of a Colorado flag backdrop" loading="lazy">
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="/images/gallery/img_7839.jpg" alt="A volunteer in a DevOpsDays Rockies shirt operating the AV production desk" loading="lazy">
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="/images/gallery/img_7812.jpg" alt="Illuminated Bierstadt Lagerhaus sign at night" loading="lazy">
+                        </div>
+                    </div>
+                    <button class="carousel-arrow prev" aria-label="Previous photo" type="button">&lsaquo;</button>
+                    <button class="carousel-arrow next" aria-label="Next photo" type="button">&rsaquo;</button>
+                </div>
+                <div class="carousel-dots"></div>
+            </div>
+        </section>
 
+        <section class="connect">
+            <div style="text-align: center;"><span class="eyebrow">Community</span></div>
+            <h2><span class="accent-word">Come</span> Meet Us</h2>
+            <div class="links-grid">
                 <a href="https://www.meetup.com/denverdevops" class="link-card">
                     <h3>Meetup Events</h3>
                     <p>Monthly talks, workshops, and networking opportunities</p>
@@ -74,7 +106,8 @@
         </section>
 
         <section class="about">
-            <h2>What We're About</h2>
+            <div style="text-align: center;"><span class="eyebrow">Our Mission</span></div>
+            <h2><span class="accent-word-alt">What</span> We're About</h2>
             <div class="values-preview">
                 <div class="value-item">
                     <h3>Continuous Learning</h3>
@@ -98,5 +131,56 @@
             <p>Built with care at 5,280 feet</p>
         </div>
     </footer>
+
+    <script>
+        (function () {
+            var carousel = document.querySelector('.carousel');
+            if (!carousel) return;
+
+            var track = carousel.querySelector('.carousel-track');
+            var slides = carousel.querySelectorAll('.carousel-slide');
+            var dotsContainer = carousel.querySelector('.carousel-dots');
+            var prevBtn = carousel.querySelector('.carousel-arrow.prev');
+            var nextBtn = carousel.querySelector('.carousel-arrow.next');
+            var index = 0;
+            var timer;
+
+            slides.forEach(function (_, i) {
+                var dot = document.createElement('button');
+                dot.type = 'button';
+                dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+                dot.setAttribute('aria-label', 'Go to photo ' + (i + 1));
+                dot.addEventListener('click', function () { goTo(i); });
+                dotsContainer.appendChild(dot);
+            });
+            var dots = carousel.querySelectorAll('.carousel-dot');
+
+            function update() {
+                track.style.transform = 'translateX(-' + (index * 100) + '%)';
+                dots.forEach(function (d, i) { d.classList.toggle('active', i === index); });
+            }
+
+            function goTo(i) {
+                index = (i + slides.length) % slides.length;
+                update();
+                resetTimer();
+            }
+
+            function next() { goTo(index + 1); }
+            function prev() { goTo(index - 1); }
+
+            function resetTimer() {
+                clearInterval(timer);
+                timer = setInterval(next, 5000);
+            }
+
+            prevBtn.addEventListener('click', prev);
+            nextBtn.addEventListener('click', next);
+            carousel.addEventListener('mouseenter', function () { clearInterval(timer); });
+            carousel.addEventListener('mouseleave', resetTimer);
+
+            resetTimer();
+        })();
+    </script>
 </body>
 </html>
